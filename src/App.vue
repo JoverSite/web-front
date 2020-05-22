@@ -1,61 +1,114 @@
 <template>
   <v-app>
     <v-app-bar
+      class="toolbar"
+      color="white"
       app
-      color="primary"
-      dark
+      flat
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-toolbar-title
+        class="toolbar__title display-1 black white--text"
+        v-text="titleName"
+        @click="() => goRouter('Home')"
+      />
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-toolbar-items>
+        <v-btn
+          v-for="btn in navigateBtns"
+          :key="btn.text"
+          class="text--secondary"
+          :class="{'nav__btn--activate': btn.isActive}"
+          color="white"
+          :disabled="btn.isActive"
+          :dark="btn.isActive"
+          depressed
+          @click="() => goRouter(btn.router)"
+        >
+          <div class="black--text text-none" v-text="btn.text" />
+        </v-btn>
+      </v-toolbar-items>
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <router-view />
     </v-content>
   </v-app>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import Vue from 'vue'
+import { Component, Watch } from 'vue-property-decorator'
 
-export default Vue.extend({
-  name: 'App',
+@Component({})
+export default class App extends Vue {
+  titleName = 'Jover'
 
-  components: {
-    HelloWorld,
-  },
+  navigateBtns: Array<NavigateBtn> = []
 
-  data: () => ({
-    //
-  }),
-});
+  @Watch('$route.name')
+  updateRoute () {
+    this.updateNavigate()
+  }
+
+  updateNavigate () {
+    this.navigateBtns = [
+      {
+        text: 'Home',
+        router: 'Home',
+        isActive: this.$route.name === 'Home',
+      }, {
+        text: 'Blog',
+        router: 'Blog',
+        isActive: this.$route.name === 'Blog',
+      }, {
+        text: 'Earth',
+        router: 'Earth',
+        isActive: this.$route.name === 'Earth',
+      }, {
+        text: 'Window',
+        router: 'Window',
+        isActive: this.$route.name === 'Window',
+      },
+    ]
+  }
+
+  // Mounted
+  mounted () {
+    this.updateNavigate()
+  }
+
+  goRouter (router: string) {
+    this.$router.push({ name: router })
+  }
+}
 </script>
+
+<style lang="scss">
+.toolbar {
+  .v-toolbar /deep/ .v-toolbar__content {
+    padding-left: 0;
+  }
+
+  .toolbar__title {
+    font-family: "Noto Sans", "sans-serif", "微软雅黑";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -8px;
+    margin-left: -16px;
+    height: 72px; // todo: auto calculus.
+    width: 180px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .nav__btn--activate {
+    /deep/ div {
+      color: grey !important;
+    }
+  }
+}
+</style>

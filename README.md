@@ -1,4 +1,4 @@
-# joversite3
+# joversite
 
 ## Project setup
 ```
