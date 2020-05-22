@@ -19,7 +19,7 @@
           v-for="btn in navigateBtns"
           :key="btn.text"
           class="text--secondary"
-          :class="{'nav__btn--activate': btn.isActive}"
+          :class="{'toolbar__btn--activate': btn.isActive}"
           color="white"
           :disabled="btn.isActive"
           :dark="btn.isActive"
@@ -85,9 +85,9 @@ export default class App extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .toolbar {
-  .v-toolbar /deep/ .v-toolbar__content {
+  &::v-deep .v-toolbar .v-toolbar__content {
     padding-left: 0;
   }
 
@@ -105,10 +105,9 @@ export default class App extends Vue {
     user-select: none;
   }
 
-  .nav__btn--activate {
-    /deep/ div {
-      color: grey !important;
-    }
+  .toolbar__btn--activate div {
+    color: grey !important;
   }
+
 }
 </style>
