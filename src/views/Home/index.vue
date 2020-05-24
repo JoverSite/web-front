@@ -7,7 +7,7 @@
       <div>
         <span>Copyright © 2020 JoverSite.</span>
       </div>
-      <a href="http://www.beian.miit.gov.cn">粤ICP备19028197号-1</a>
+      <a href="http://www.beian.miit.gov.cn" />
     </v-footer>
   </div>
 </template>
