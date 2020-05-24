@@ -14,9 +14,9 @@ const routes: Array<RouteConfig> = [
     name: 'Blog',
     component: () => import('@/views/Blog/index.vue'),
   }, {
-    path: '/earth',
-    name: 'Earth',
-    component: () => import('@/views/Earth/index.vue'),
+    path: '/inline-tools',
+    name: 'InlineTools',
+    component: () => import('@/views/InlineTools/index.vue'),
   }, {
     path: '/window',
     name: 'Window',

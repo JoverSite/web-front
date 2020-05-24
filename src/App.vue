@@ -63,9 +63,9 @@ export default class App extends Vue {
         router: 'Blog',
         isActive: this.$route.name === 'Blog',
       }, {
-        text: 'Earth',
-        router: 'Earth',
-        isActive: this.$route.name === 'Earth',
+        text: 'Inline Tools',
+        router: 'InlineTools',
+        isActive: this.$route.name === 'InlineTools',
       }, {
         text: 'Window',
         router: 'Window',
