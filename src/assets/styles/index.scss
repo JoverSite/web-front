@@ -4,3 +4,19 @@
   font-family: helvetica-w01-bold, helvetica-w02-bold, helvetica-lt-w10-bold, sans-serif;
   user-select: none;
 }
+
+:root {
+  font-size: .75em;
+}
+
+@media (min-width: 800px) {
+  :root {
+    font-size: .875em;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    font-size: 1em;
+  }
+}
