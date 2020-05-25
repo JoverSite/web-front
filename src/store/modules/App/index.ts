@@ -1,5 +1,5 @@
 import { RootState, NavigateBtn, GoRoute, IsNowRoute } from './index.d'
-import { GetterTree, MutationTree, ActionTree } from 'vuex'
+import { GetterTree, MutationTree } from 'vuex'
 import $router from '@/router'
 
 const state: RootState = {
@@ -32,23 +32,9 @@ const mutations: MutationTree<RootState> = {
   },
 }
 
-const actions: ActionTree<any, any> = {
-  queryContents ({ commit }: any) {
-    console.log(123)
-    commit('updateContents',
-      [
-        { url: require('@/assets/images/home/b1.jpg') },
-        { url: require('@/assets/images/home/b2.jpg') },
-        { url: require('@/assets/images/home/b3.jpg') },
-      ],
-    )
-  },
-}
-
 export default {
   namespaced: true,
   state,
   getters,
   mutations,
-  actions,
 }
