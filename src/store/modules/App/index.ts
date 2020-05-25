@@ -28,7 +28,7 @@ const getters: GetterTree<RootState, any> = {
 
 const mutations: MutationTree<RootState> = {
   goRoute (state: any, { name }: GoRoute): void {
-    $router.app.$router.push({ name })
+    ($router.app.$route.name !== name) && $router.push({ name })
   },
 }
 

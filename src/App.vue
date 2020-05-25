@@ -10,7 +10,7 @@
       <v-toolbar-title
         class="toolbar__title title black white--text"
         v-text="titleName"
-        @click="() => goRouter('Home')"
+        @click="() => goRoute({ name: 'Home' })"
       />
 
       <v-spacer></v-spacer>
