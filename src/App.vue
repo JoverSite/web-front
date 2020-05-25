@@ -20,10 +20,10 @@
           v-for="btn in navigateBtns"
           :key="btn.text"
           class="toolbar__btn text--secondary"
-          :class="{'toolbar__btn--activate': btn.isActive}"
+          :class="{'toolbar__btn--activate': isNowRoute(btn.router)}"
           color="white"
-          :disabled="btn.isActive"
-          :dark="btn.isActive"
+          :disabled="isNowRoute(btn.router)"
+          :dark="isNowRoute(btn.router)"
           depressed
           @click="() => goRouter(btn.router)"
         >
@@ -39,44 +39,30 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 @Component
 export default class App extends Vue {
   titleName = 'Jover Zhang'
 
-  navigateBtns: Array<NavigateBtn> = []
+  navigateBtns: Array<NavigateBtn> = [
+    {
+      text: 'Home',
+      router: 'Home',
+    }, {
+      text: 'Blog',
+      router: 'Blog',
+    }, {
+      text: 'Inline Tools',
+      router: 'InlineTools',
+    }, {
+      text: 'Window',
+      router: 'Window',
+    },
+  ]
 
-  @Watch('$route.name')
-  updateRoute () {
-    this.updateNavigate()
-  }
-
-  updateNavigate () {
-    this.navigateBtns = [
-      {
-        text: 'Home',
-        router: 'Home',
-        isActive: this.$route.name === 'Home',
-      }, {
-        text: 'Blog',
-        router: 'Blog',
-        isActive: this.$route.name === 'Blog',
-      }, {
-        text: 'Inline Tools',
-        router: 'InlineTools',
-        isActive: this.$route.name === 'InlineTools',
-      }, {
-        text: 'Window',
-        router: 'Window',
-        isActive: this.$route.name === 'Window',
-      },
-    ]
-  }
-
-  // Mounted
-  mounted () {
-    this.updateNavigate()
+  get isNowRoute () {
+    return (router: string) => router === this.$route.name
   }
 
   goRouter (router: string) {
