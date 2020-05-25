@@ -3,11 +3,12 @@
     <v-app-bar
       class="toolbar"
       color="white"
+      height="44px"
       app
       flat
     >
       <v-toolbar-title
-        class="toolbar__title display-1 black white--text"
+        class="toolbar__title title black white--text"
         v-text="titleName"
         @click="() => goRouter('Home')"
       />
@@ -18,7 +19,7 @@
         <v-btn
           v-for="btn in navigateBtns"
           :key="btn.text"
-          class="text--secondary"
+          class="toolbar__btn text--secondary"
           :class="{'toolbar__btn--activate': btn.isActive}"
           color="white"
           :disabled="btn.isActive"
@@ -38,12 +39,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { Component, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
 
-@Component({})
+@Component
 export default class App extends Vue {
-  titleName = 'Jover'
+  titleName = 'Jover Zhang'
 
   navigateBtns: Array<NavigateBtn> = []
 
@@ -92,21 +92,22 @@ export default class App extends Vue {
   }
 
   .toolbar__title {
-    font-family: "Noto Sans", "sans-serif", "微软雅黑";
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -8px;
     margin-left: -16px;
-    height: 72px; // todo: auto calculus.
-    width: 180px;
+    height: 44px;
+    width: 220px;
     text-align: center;
     cursor: pointer;
-    user-select: none;
   }
 
-  .toolbar__btn--activate div {
-    color: grey !important;
+  .toolbar__btn {
+    font-weight: 600;
+
+    &--activate div {
+      color: grey !important;
+    }
   }
 
 }
