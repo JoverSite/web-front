@@ -53,11 +53,21 @@ export default class Developing extends Vue {
       }, {
         name: 'MINUTES',
         time: this.zeroPadding(needTime.getMinutes().toString()),
-      }, {
-        name: 'SECONDS',
-        time: this.zeroPadding(needTime.getSeconds().toString()),
       },
     ]
+    // Use Months by more than one month.
+    // Use Seconds by lees than one month.
+    if (needTime.getMonth()) {
+      this.countdownTimes.unshift({
+        name: 'MONTHS',
+        time: this.zeroPadding(needTime.getMonth().toString()),
+      })
+    } else {
+      this.countdownTimes.push({
+        name: 'SECONDS',
+        time: this.zeroPadding(needTime.getSeconds().toString()),
+      })
+    }
   }
 
   mounted () {
