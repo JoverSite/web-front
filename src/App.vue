@@ -20,12 +20,12 @@
           v-for="btn in navigateBtns"
           :key="btn.text"
           class="toolbar__btn text--secondary"
-          :class="{'toolbar__btn--activate': isNowRoute(btn.router)}"
+          :class="{'toolbar__btn--activate': isNowRoute({ name:btn.route })}"
           color="white"
-          :disabled="isNowRoute(btn.router)"
-          :dark="isNowRoute(btn.router)"
+          :disabled="isNowRoute({ name:btn.route } )"
+          :dark="isNowRoute({ name:btn.route })"
           depressed
-          @click="() => goRouter(btn.router)"
+          @click="() => goRoute({ name: btn.route})"
         >
           <div class="black--text text-none" v-text="btn.text" />
         </v-btn>
@@ -40,34 +40,24 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { namespace } from 'vuex-class'
+import { NavigateBtn, GoRoute, IsNowRoute } from '@/store/modules/App/index.d'
+
+const {
+  State,
+  Getter,
+  Mutation,
+} = namespace('App')
 
 @Component
 export default class App extends Vue {
   titleName = 'Jover Zhang'
 
-  navigateBtns: Array<NavigateBtn> = [
-    {
-      text: 'Home',
-      router: 'Home',
-    }, {
-      text: 'Blog',
-      router: 'Blog',
-    }, {
-      text: 'Inline Tools',
-      router: 'InlineTools',
-    }, {
-      text: 'Window',
-      router: 'Window',
-    },
-  ]
+  @State navigateBtns!: Array<NavigateBtn>
 
-  get isNowRoute () {
-    return (router: string) => router === this.$route.name
-  }
+  @Getter isNowRoute!: (payload: IsNowRoute) => boolean
 
-  goRouter (router: string) {
-    this.$router.push({ name: router })
-  }
+  @Mutation goRoute!: (payload: GoRoute) => void
 }
 </script>
 
