@@ -42,7 +42,7 @@ export default class Developing extends Vue {
 
   updateCountDownTimes () {
     const nowDate = new Date()
-    const needTime = new Date(this.targetTime - nowDate)
+    const needTime = new Date(this.targetTime.getTime() - nowDate.getTime())
     this.countdownTimes = [
       {
         name: 'DAYS',
