@@ -13,7 +13,6 @@ const mutations: MutationTree<RootState> = {
 
 const actions: ActionTree<any, any> = {
   queryContents ({ commit }: any) {
-    console.log(123)
     commit('updateContents',
       [
         { url: require('@/assets/images/home/b1.jpg') },
