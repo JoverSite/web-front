@@ -1,9 +1,22 @@
 <template>
   <div class="home">
     <div class="home__title">
-      <h1>Time is move on.</h1>
+      <jump-text
+        class="home__title__name"
+        :text="titleName"
+        mouse-evens
+        auto-play
+        animate-time="2000"
+      />
     </div>
-    <v-footer class="home__footer" color="white">
+
+    <div class="home__content">
+      <v-lazy v-for="item in contents" :key="item.url" class="home__content__sheet" :options="{ threshold: .5 }">
+        <img class="home__content__sheet__img" :src="item.url" :alt="item.url"/>
+      </v-lazy>
+    </div>
+
+    <v-footer class="home__footer" color="black">
       <div>
         <span>Copyright © 2020 JoverSite.</span>
       </div>
@@ -12,12 +25,32 @@
   </div>
 </template>
 
-<script>
-import Vue from 'vue'
-import { Component } from 'vue-property-decorator'
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+import { namespace } from 'vuex-class'
+import { Sheet } from '@/store/modules/Home/index.d'
+import JumpText from '@/components/JumpText.vue'
 
-@Component({})
+const {
+  State,
+  Action,
+} = namespace('Home')
+
+@Component({
+  components: {
+    JumpText,
+  },
+})
 export default class Home extends Vue {
+  titleName = 'Time to move on...'
+
+  @State contents!: Array<Sheet>
+
+  @Action queryContents!: () => void
+
+  mounted () {
+    this.queryContents()
+  }
 }
 </script>
 
@@ -29,14 +62,46 @@ export default class Home extends Vue {
   height: 100%;
 
   .home__title {
+    position: relative;
     display: flex;
-    height: calc(100vh - 64px);
+    height: 100vh;
+    width: 100vw;
     align-items: center;
     justify-content: center;
+    background: url(../../assets/images/home/home_bg.jpg) center no-repeat;
+    background-size: 1920px;
 
-    > h1 {
-      font-family: 微软雅黑, "Noto Sans", "sans-serif";
+    .home__title__name {
+      z-index: 0;
+      font-size: 6rem !important;
+      font-weight: 600;
+      color: white !important;
       margin-bottom: 72px;
+    }
+  }
+
+  .home__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5rem;
+    width: 100vw;
+    background-color: black;
+    color: white;
+
+    .home__content__sheet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 5rem;
+      padding: 0 10vw;
+      width: 80vw;
+      height: 40vw;
+      overflow: hidden;
+
+      .home__content__sheet__img {
+        width: 100%;
+      }
     }
   }
 
@@ -44,7 +109,7 @@ export default class Home extends Vue {
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding: 0 20rem;
+    padding: 0 10vw;
     width: 100%;
     font-size: .8rem;
 
