@@ -1,3 +1,6 @@
+# package directory
+/package
+
 # project file
 src/assets/styles/*.css
 src/assets/styles/*.map
