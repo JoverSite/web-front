@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.49fc834ceaed0a67543aa425de45413f.js"
+  "/precache-manifest.e962740fd0eb3f1b533b3228497969f3.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "joverzhang"});
