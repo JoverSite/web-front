@@ -1,31 +1,31 @@
 <template>
   <v-app>
     <v-app-bar
-      class="toolbar"
-      color="white"
-      height="44px"
-      app
-      flat
+        class="toolbar"
+        color="white"
+        height="44px"
+        app
+        flat
     >
       <v-toolbar-title
-        class="toolbar__title title black white--text"
-        v-text="titleName"
-        @click="() => goRoute({ name: 'Home' })"
+          class="toolbar__title title black white--text"
+          v-text="titleName"
+          @click="() => goRoute({ name: 'Home' })"
       />
 
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
         <v-btn
-          v-for="btn in navigateBtns"
-          :key="btn.text"
-          class="toolbar__btn text--secondary"
-          :class="{'toolbar__btn--activate': isNowRoute({ name:btn.route })}"
-          color="white"
-          :disabled="isNowRoute({ name:btn.route } )"
-          :dark="isNowRoute({ name:btn.route })"
-          depressed
-          @click="() => goRoute({ name: btn.route})"
+            v-for="btn in navigateBtns"
+            :key="btn.text"
+            class="toolbar__btn text--secondary"
+            :class="{'toolbar__btn--activate': isNowRoute({ name:btn.route })}"
+            color="white"
+            :disabled="isNowRoute({ name:btn.route } )"
+            :dark="isNowRoute({ name:btn.route })"
+            depressed
+            @click="() => goRoute({ name: btn.route})"
         >
           <div class="black--text text-none" v-text="btn.text" />
         </v-btn>
@@ -34,6 +34,7 @@
 
     <v-content>
       <router-view />
+      <call />
     </v-content>
   </v-app>
 </template>
@@ -43,13 +44,17 @@ import { Vue, Component } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 import { NavigateBtn, GoRoute, IsNowRoute } from '@/store/modules/App/index.d'
 
+import Call from '@/components/Call/index.vue'
+
 const {
   State,
   Getter,
   Mutation,
 } = namespace('App')
 
-@Component
+@Component({
+  components: { Call },
+})
 export default class App extends Vue {
   titleName = 'Jover Zhang'
 
