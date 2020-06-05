@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eb8946d38321b74a2487",
+    "revision": "4a5f784a17680420c6a5",
     "url": "https://static.joverzhang.com/css/app.617e767c.css"
   },
   {
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://static.joverzhang.com/css/chunk-bab6e00c.2b2aab28.css"
   },
   {
-    "revision": "a3656d04a683ce98b018",
+    "revision": "a9c36b134f3cd2ed970a",
     "url": "https://static.joverzhang.com/css/chunk-vendors.52fadf18.css"
   },
   {
@@ -56,12 +56,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://static.joverzhang.com/img/home_bg.42c48580.jpg"
   },
   {
-    "revision": "ae63c0e4fe3e87fb13931c8959fe00cf",
+    "revision": "a39eab43f080aa89b59219590ba67ef0",
     "url": "https://static.joverzhang.com/index.html"
   },
   {
-    "revision": "eb8946d38321b74a2487",
-    "url": "https://static.joverzhang.com/js/app.3ce9bc64.js"
+    "revision": "4a5f784a17680420c6a5",
+    "url": "https://static.joverzhang.com/js/app.c1e7ea49.js"
   },
   {
     "revision": "4a4520d3a23582f20aa9",
@@ -80,8 +80,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://static.joverzhang.com/js/chunk-bab6e00c.d780e078.js"
   },
   {
-    "revision": "a3656d04a683ce98b018",
-    "url": "https://static.joverzhang.com/js/chunk-vendors.2bc1df4b.js"
+    "revision": "a9c36b134f3cd2ed970a",
+    "url": "https://static.joverzhang.com/js/chunk-vendors.f8113d66.js"
   },
   {
     "revision": "c2cd050b8aaaa5d8811b5abe055d3724",
