@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cfbd1099e2036de7fae7",
+    "revision": "eb8946d38321b74a2487",
     "url": "https://static.joverzhang.com/css/app.617e767c.css"
   },
   {
@@ -56,12 +56,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://static.joverzhang.com/img/home_bg.42c48580.jpg"
   },
   {
-    "revision": "26de4ca1b423f487f72a6e9e2746b4f1",
+    "revision": "ae63c0e4fe3e87fb13931c8959fe00cf",
     "url": "https://static.joverzhang.com/index.html"
   },
   {
-    "revision": "cfbd1099e2036de7fae7",
-    "url": "https://static.joverzhang.com/js/app.68a42ad1.js"
+    "revision": "eb8946d38321b74a2487",
+    "url": "https://static.joverzhang.com/js/app.3ce9bc64.js"
   },
   {
     "revision": "4a4520d3a23582f20aa9",
